@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useContext } from 'react'
 import ProyectoContext from '../../../context/Proyectos/ProyectoContext'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare, faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 
 const NuevoProyecto = () => {
 
@@ -41,21 +43,21 @@ const NuevoProyecto = () => {
 
     return(
         <Fragment>
-            <button className="btn btn-block btn-primario" onClick={mostrarFormulario}>
-                Nuevo proyecto
-            </button>
+            <FontAwesomeIcon icon={faPlusSquare} onClick={mostrarFormulario} className="boton-nuevoproyecto" />
             { formulario
             ?
                 (<form className="formulario-nuevo-proyecto" onSubmit={handleSubmit}>
                     <input 
                         type="text"
                         className="input-text"
-                        placeholder="Nombre proyecto"
+                        placeholder=""
                         name="nombre"
                         value={nombre}
                         onChange={handleInput}
                     />
-                    <button className="btn btn-primario btn-block">Crear</button>
+                    <button type="submit" className="invisible-button">
+                        <FontAwesomeIcon icon={faCheckCircle} className="boton-crearproyecto"/>
+                    </button>
                 </form>)
             :
                 null

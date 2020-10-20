@@ -39,6 +39,7 @@ const TareaState = props => {
     // Crear una nueva tarea para un proyecto
     const agregarTarea = async tarea => {
         try {
+            // eslint-disable-next-line
             const respuesta = await clienteAxios.post('/api/tareas', tarea);
             dispatch({
                 type: AGREGAR_TAREA,

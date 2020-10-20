@@ -1,6 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import TareasContext from '../../../context/Tareas/TareaContext'
 import ProyectosContext from '../../../context/Proyectos/ProyectoContext'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Tarea = ({ tarea }) => {
 
@@ -49,16 +51,8 @@ const Tarea = ({ tarea }) => {
                 }
             </div>
             <div className="acciones">
-                <button
-                    type="button"
-                    className="btn btn-primario"
-                    onClick={handleEditar}
-                >Editar</button>
-                <button
-                    type="button"
-                    className="btn btn-secundario"
-                    onClick={() => tareaEliminar(tarea._id)}
-                >Eliminar</button>
+                <FontAwesomeIcon icon={faEdit} onClick={handleEditar} />
+                <FontAwesomeIcon icon={faTrashAlt} onClick={() => tareaEliminar(tarea._id)} />
             </div>
         </li>
     )

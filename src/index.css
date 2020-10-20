@@ -4,8 +4,12 @@
   --gris2: #2f3848;
   --gris3: #1a202d;
   --negro: #000000;
+  --blue: #1f2887;
+  --white: #fdfcff;
+  --lightgrey:  #c3c2c5;
   --headingFont:'Raleway', sans-serif;
   --textFont:  'Roboto', sans-serif;
+
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -24,6 +28,14 @@ body {
   font-family: var(--textFont);
 }
 
+.background {
+  background: url('../src/assets/mytasks_background.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  padding: 75px;
+}
 
 h1, h2 {
   font-family: var(--headingFont);
@@ -39,7 +51,9 @@ h1 {
   font-size: 3rem;
 }
 h2 {
-  font-size: 2.4rem;
+  font-size: 2rem;
+  color: var(--lightgrey);
+  text-align: left;
 }
 ul {
   list-style: none;
@@ -66,11 +80,11 @@ a {
   cursor: pointer;
 }
 .btn-primario {
-  background-color: var(--gris2);
-  color: var(--blanco);
+  background-color: var(--white);
+  color: var(--blue);
 }
 .btn-primario:hover {
-  background: var(--gris3);
+  background: var(--white);
 }
 .btn-secundario {
   background-color: var(--gris1);
@@ -91,12 +105,28 @@ a {
 .cerrar-sesion {
   color: var(--blanco);
 }
+.btn-eliminar {
+  color: white;
+  background-color: #414399;
+}
 
 @media (min-width: 768px) {
   .contenedor-app {
-      display: flex;
-      min-height: 100vh;
+    border-radius: 20px;
+    display: flex;
+    min-height: 100vh;
+    transition: all 0.3s;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
   }
+
+  .contenedor-app:hover {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  }
+  
 
   aside {
       background-color: var(--blanco);
@@ -104,45 +134,105 @@ a {
   }
   .seccion-principal {
       flex: 1;
+      height: 100vh;
   }
 
 }
 
 
 /* BARRA LATERAL */
-aside  {
-  padding: 3rem;
-}
 
 .formulario-nuevo-proyecto {
-  margin-top: 6rem;
+  margin: 20px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
 }
-.formulario-nuevo-proyecto .input-text {
-  border-bottom: 1px solid var(--gris2);
+.formulario-nuevo-proyecto .input-text:first-of-type {
+  display: inline-block;
+  flex-grow: 1;
   border-radius: 0;
-  background-color: var(--gris1);
+  background-color: #4a4db4;
+  border: 0px;
+  border-bottom: 1px solid white;
+  padding: 10px 0px 10px 0px;
+  color: white;
+}
+.formulario-nuevo-proyecto .input-text:active,
+.formulario-nuevo-proyecto .input-text:focus {
+  outline: none;
 }
 .formulario-nuevo-proyecto .input-text::placeholder{
-  color: var(--gris2);
+  color: white;
 }
-.proyectos {
-  margin-top: 10rem;
+.invisible-button {
+  background-color: #4a4cb2;
+  width: 20%;
+  border: none;
+}
+.invisible-button:active,
+.invisible-button:focus {
+  outline: none;
+}
+.boton-crearproyecto{
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.boton-crearproyecto:hover{
+  color: var(--lightgrey);
+}
+.label-sinproyectos {
+  color: var(--lightgrey);
 }
 .listado-proyectos li {
   margin-bottom: 2rem;
 }
-.listado-proyectos li a {
-  font-size: 1.4rem;
-  color: var(--gris2);
+
+.listado-proyectos li svg {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: var(--lightgrey);
   line-height: 1.5;
   font-weight: 300;
+  cursor: pointer;
+}
+
+.listado-proyectos li span {
+  display: inline-block;
+}
+
+.listado-proyectos li span button {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: var(--lightgrey);
+  line-height: 1.5;
+  font-weight: 300;
+}
+.listado-proyectos li span button:active,
+.listado-proyectos li span button:focus {
+  outline: none;
+  color: var(--white);
 }
 .app-header {
   display: flex;
   justify-content: space-between;
-  background: rgb(83,103,140);
-  background: radial-gradient(circle, rgba(83,103,140,1) 0%, rgba(122,126,159,1) 100%);
+  background-color: var(--white);
   padding: 4rem;
+  border-radius: 0px 20px 0px 0px;
+  height: 12vh;
+}
+
+.app-header p {
+  color: var(--blue);
+}
+
+.main{
+  border-radius: 0px 0px 20px 0px;
+  background-color: var(--white);
+  height: 88vh;
 }
 .nombre-usuario {
   color: var(--blanco);
@@ -152,53 +242,157 @@ aside  {
 .nombre-usuario span {
   font-weight: 900;
 }
-.nav-principal a {
-  color: var(--blanco);
-  text-decoration: none;
-}
-.nav-principal a:first-of-type {
-  margin-right: 2rem;
+.nav-principal {
+  color: red;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.titulo {
-  font-family: 'Merienda One', cursive;
+.nav-principal:hover {
+  color: rgb(155, 48, 48);
+}
+
+.Sidebar {
+  padding: 3rem;
+  background: rgb(78,81,191);
+background: linear-gradient(150deg, rgba(78,81,191,1) 0%, rgba(58,60,133,1) 100%);
+  border-radius: 20px 0px 0px 20px;
+}
+
+.Sidebar__Titulo {
+  font-family: 'Roboto', sans-serif;
+  color: var(--white);
+  text-align: left;
+  display: inline-block;
+  width: 80%;
+  margin-bottom: 0px;
+}
+
+.Sidebar .boton-nuevoproyecto {
+  display: inline-block;
+  color: white;
+  font-size: 3rem;
+  margin-right: 0px;
+  cursor: pointer;
+  width: 20%;
+}
+
+.Sidebar__Proyectos {
+  padding: 0px;
+  margin-top: 40px;
 }
 
 /** Formulario crear y editar tareas **/
 .formulario {
-  background: rgb(26,32,45);
-  background: radial-gradient(circle, rgba(26,32,45,1) 0%, rgba(43,51,68,1) 100%);
+  background: var(--white);
   padding: 4rem;
+  height: 15%;
 }
 .formulario form {
   max-width: 600px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  color: var(--lightgrey);
 }
 .contenedor-input {
   display: flex;
 }
-.contenedor-input label {
-  margin-bottom: 1rem;
-  color: var(--blanco);
+.contenedor-input:first-of-type {
+  width: 87%;
 }
-.input-text {
+
+.contenedor-input:first-of-type label {
+  width: 25%;
+  line-height: 4rem;
+}
+.contenedor-input:first-of-type .input-text {
+  margin: 0px 20px 0px 20px;
   padding: 1rem;
+  height: 4rem;
+  border: none;
+  flex: 1;
+  border-bottom: 1px solid var(--gris2);
+  background-color: var(--white);
+}
+
+.contenedor-input:first-of-type .input-text::placeholder {
+  padding-left: 0px;
+}
+
+.contenedor-input:first-of-type .input-text:active,
+.contenedor-input:first-of-type .input-text:focus {
+  outline: none;
+}
+.contenedor-input:last-of-type .btn {
+  margin: 0px;
+  padding: 1rem;
+  height: 4rem;
   border: none;
   border-radius: .5rem;
   flex: 1;
   width: 100%;
 }
+.contenedor-input label {
+  color: var(--gris2);
+}
+
+.boton-nuevatarea {
+  background-color: var(--white);
+  border: 0px solid;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--gris3);
+}
+.boton-nuevatarea:active,
+.boton-nuevatarea:focus {
+  outline: none;
+}
+
+.boton-nuevatarea:hover {
+  color: rgb(53, 145, 53);
+}
 
 /** TAREAS LISTADO **/
 .contenedor-tareas {
   padding: 4rem;
+  height: 85%;
 }
 
-
+.contenedor-tareas h2 {
+  display: inline-block;
+  height: 7%;
+  width: 100%;
+  margin-bottom: 0px;
+}
 
 .listado-tareas {
   max-width: 600px;
   margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: scroll;
+  height: 86%;
+}
+
+.listado-tareas::-webkit-scrollbar {
+  background-color: var(--white);
+  width: 16px;
+}
+
+.listado-tareas::-webkit-scrollbar-track {
+  background-color: var(--white);
+}
+
+.listado-tareas::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 4px solid var(--white);
+}
+
+.listado-tareas::-webkit-scrollbar-button {
+  display: none;
 }
 
 .tarea {
@@ -221,8 +415,20 @@ aside  {
   -moz-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
   box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
 }
-.tarea .acciones .btn:first-of-type {
+.tarea .acciones svg {
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--gris3);
+  transition: all 0.3s;
+}
+.tarea .acciones svg:first-of-type {
   margin-right: 1rem;
+}
+.tarea .acciones svg:first-of-type:hover {
+  color: rgb(97, 97, 97);
+}
+.tarea .acciones svg:last-of-type:hover {
+  color: rgb(150, 10, 10);
 }
 .tarea p {
   font-size: 1.6rem;
@@ -269,8 +475,8 @@ aside  {
 .error {
   max-width: 600px;
   margin: 2rem auto 0 auto;
-  background-color: rgb(170, 0, 0);
-  color: var(--blanco);
+  background-color: #ffe0e0;
+  color: var(--gris3);
 }
 
 
@@ -295,46 +501,75 @@ aside  {
 }
 
 .form-usuario {
-    background: rgb(174,238,237);
-    background: radial-gradient(circle, rgba(174,238,237,1) 0%, rgba(164,233,148,1) 100%);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: url('../src/assets/mytasks_background2.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor-form {
-    padding: 5rem 3rem;
-    max-width: 500px;
-    width: 95%;
-    background-color: var(--blanco);
-    border-radius: 1rem;
+  height: 50vh;
+  padding: 5rem 3rem;
+  width: 40vw;
+  background-color: var(--blanco);
+  border-radius: 1rem;
+  position: relative;
 }
 
 .campo-form {
-    display: flex;
-    margin-bottom: 2rem;
-    align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
 }
 .campo-form:last-of-type {
   margin: 0;
 }
 .campo-form label {
-  flex: 0 0 100px;
+  width: 30%;
+  text-align: end;
+  padding-right: 30px;  
   font-family: var(--textFont);
 }
 .campo-form input[type="password"],
 .campo-form input[type="email"], 
 .campo-form input[type="text"] {
-  border: 1px solid #e1e1e1;
+  /*border: 1px solid #e1e1e1;*/
+  border: 0px;
+  border-bottom: 1px solid var(--gris3);
   padding: 1rem;
   flex: 1;
 }
 
+.campo-form input[type="password"]:active,
+.campo-form input[type="email"]:active, 
+.campo-form input[type="text"]:active,
+.campo-form input[type="password"]:focus,
+.campo-form input[type="email"]:focus, 
+.campo-form input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid var(--gris3);
+}
+
 .enlace-cuenta {
+  position: absolute;
+  bottom: 20px;
   margin-top: 2rem;
   display: block;
   opacity: .7;
+}
+
+.submit-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background-color: #4e51bf;
+  color: white;
+  width: auto;
 }
 
 .alerta {
@@ -366,4 +601,22 @@ aside  {
 .alerta-error {
   background-color: rgb(230, 78, 78);
   color: var(--blanco);
+}
+
+.Footer__Signature {
+  padding: 30px 0px 0px 0px;
+  margin-bottom: -30px;
+  text-align: center;
+  color: var(--white);
+}
+
+.Footer__Signature a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: bold;
+}
+
+.Footer__Signature-login {
+  position: fixed;
+  bottom: 50px;
 }

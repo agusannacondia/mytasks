@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import AuthContext from '../../../context/Autenticacion/AuthContext'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
 const Barra = () => {
 
@@ -15,10 +17,7 @@ const Barra = () => {
         <header className="app-header">
             { usuario ? (<p className="nombre-usuario">Hola <span>{ usuario.nombre }</span></p>) : null }
             <nav className="nav-principal">
-            <button 
-                    className="btn btn-blank cerrar-sesion"
-                    onClick={() => cerrarSesion() }
-                >Cerrar Sesión</button>
+                <FontAwesomeIcon icon={faPowerOff} onClick={() => cerrarSesion() }/>
             </nav>
         </header>
     )

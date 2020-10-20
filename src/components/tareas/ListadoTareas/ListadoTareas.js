@@ -3,6 +3,8 @@ import ProyectoContext from '../../../context/Proyectos/ProyectoContext'
 import TareasContext from '../../../context/Tareas/TareaContext'
 import Tarea from '../Tarea'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ListadoTareas = () => {
 
@@ -29,7 +31,7 @@ const ListadoTareas = () => {
             <ul className="listado-tareas">
                 {
                     tareasProyecto.length === 0 
-                        ? (<li className="tarea"><p>No hay tareas</p></li>)
+                        ? (<li className="tarea"><p>Aún no hay tareas. Puedes comenzar creando una.</p></li>)
                         :   <TransitionGroup>
                                 {tareasProyecto.map(item => (
                                     <CSSTransition
@@ -49,7 +51,8 @@ const ListadoTareas = () => {
                 type="button"
                 className="btn btn-eliminar"
                 onClick={handleEliminar}
-            >Eliminar proyecto &times;</button>
+            >Eliminar proyecto <FontAwesomeIcon icon={faTrashAlt}/>
+            </button>
         </Fragment>
     )
 }
